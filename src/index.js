@@ -1,5 +1,7 @@
-var tasks = [];
-let compleTasks = [];
+var tasks = [];//array to store incompleted tasks
+let compleTasks = []; //array to store completed tasks
+
+//function to get text from user and push it into array 
 function addTask() {
   let task = document.getElementById("new-task").value;
   var ob = {
@@ -10,6 +12,8 @@ function addTask() {
   display();
 }
 
+
+//function to display incomplete tasks
 function display() {
   let str = "";
   var data;
@@ -31,6 +35,8 @@ function display() {
   document.getElementById("incomplete-tasks").innerHTML = str;
 }
 
+
+//function to remove checked tasks from incomplete array to add them to array of completed tasks
 function showComplete(val) {
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].task == val) {
@@ -41,6 +47,8 @@ function showComplete(val) {
   display();
   displayCompleted();
 }
+
+//function to display completed tasks
 function displayCompleted() {
   let str = "";
   var data;
@@ -64,6 +72,8 @@ function displayCompleted() {
   }
   document.getElementById("completed-tasks").innerHTML = str;
 }
+
+//function to delete tasks of incomplete tasks array
 function delFun(val) {
   for (let i = 0; i < tasks.length; i++) {
     if (tasks[i].task == val) {
@@ -72,6 +82,8 @@ function delFun(val) {
   }
   display();
 }
+
+//function to delete tasks of complete tasks array
 function delFun2(val) {
   for (let i = 0; i < compleTasks.length; i++) {
     if (compleTasks[i].task == val) {
@@ -81,6 +93,8 @@ function delFun2(val) {
   displayCompleted();
 }
 
+
+//function to edit/update the value of old incomplete tasks
 function edit(val) {
   document.getElementById("new-task").value = val;
   document.getElementById("addButton").style.display = "none";
@@ -98,6 +112,8 @@ function edit(val) {
     display();
   };
 }
+
+//function to edit/update the value of old completed tasks
 function edit2(val) {
   document.getElementById("new-task").value = val;
   document.getElementById("addButton").style.display = "none";
@@ -115,6 +131,8 @@ function edit2(val) {
     displayCompleted();
   };
 }
+
+//function to remove tasks from completed tasks and add them in incomplete tasks array
 function showComplete2(val) {
   for (let i = 0; i < compleTasks.length; i++) {
     if (compleTasks[i].task == val) {
